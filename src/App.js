@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// import { lazy } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 
-function App() {
+import { Footer } from "./components/Footer/Footer";
+import { Layout } from "./components/Layout/Layout";
+import { Home } from "./Pages/Home/Home";
+import { Tweets } from "./Pages/Tweets/Tweets";
+
+// const { Home } = lazy(() => import("../Pages/Home/Home"));
+// const { Tweets } = lazy(() => import("../Pages/Tweets/Tweets"));
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="tweets" element={<Tweets />} />
+          <Route path="*" element={<Navigate to={"/"} />} />
+        </Route>
+      </Routes>
+      <Footer />
+    </>
   );
-}
-
-export default App;
+};
