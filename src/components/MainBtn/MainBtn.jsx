@@ -37,7 +37,7 @@ export const MainBtn = ({ title, usersData, setCurrentUsers }) => {
 };
 
 MainBtn.propTypes = {
-  title: PropTypes.string.isRequired,
-  usersData: PropTypes.array.isRequired,
-  setCurrentUsers: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  usersData: PropTypes.array,
+  setCurrentUsers: PropTypes.func,
 };

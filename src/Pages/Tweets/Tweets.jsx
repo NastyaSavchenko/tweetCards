@@ -7,7 +7,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { getUsers } from "../../services/takeApi";
 import { MainSlyels, NavSection } from "./Tweets.styled";
 
-export const Tweets = () => {
+const Tweets = () => {
   const [currentUsers, setCurrentUsers] = useLocalStorage("users", []);
 
   useEffect(() => {
@@ -46,3 +46,5 @@ export const Tweets = () => {
     </MainSlyels>
   );
 };
+
+export default Tweets;

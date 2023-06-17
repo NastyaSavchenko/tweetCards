@@ -83,7 +83,7 @@ export const TweetCard = ({ userData, currentUsers, setCurrentUsers }) => {
 };
 
 TweetCard.propTypes = {
-  userData: PropTypes.object.isRequired,
-  currentUsers: PropTypes.array.isRequired,
-  setCurrentUsers: PropTypes.func.isRequired,
+  userData: PropTypes.object,
+  currentUsers: PropTypes.array,
+  setCurrentUsers: PropTypes.func,
 };

@@ -23,6 +23,6 @@ export const TweetsList = ({ currentUsers, setCurrentUsers }) => {
 };
 
 TweetsList.propTypes = {
-  currentUsers: PropTypes.array.isRequired,
-  setCurrentUsers: PropTypes.func.isRequired,
+  currentUsers: PropTypes.array,
+  setCurrentUsers: PropTypes.func,
 };
