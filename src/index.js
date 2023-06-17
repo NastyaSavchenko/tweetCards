@@ -9,7 +9,7 @@ import { App } from "./App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/tweets">
+    <BrowserRouter basename="/tweetCards">
       {/* <BrowserRouter> */}
       <App />
     </BrowserRouter>
