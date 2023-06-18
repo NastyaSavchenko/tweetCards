@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 
-import { MainBtn } from "../../components/MainBtn/MainBtn";
+import { LoadMore } from "../../components/LoadMore/LoadMore";
 import { Search } from "../../components/Search/Search";
 import { TweetsList } from "../../components/TweetsList/TweetsList";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { getUsers } from "../../services/takeApi";
-import { MainSlyels, NavSection } from "./Tweets.styled";
+import { LinkStyels, MainSlyels, NavSection } from "./Tweets.styled";
 
 const Tweets = () => {
   const [currentUsers, setCurrentUsers] = useLocalStorage("users", []);
@@ -29,13 +29,9 @@ const Tweets = () => {
     <MainSlyels>
       <h2>list of user cards</h2>
       <NavSection>
-        <MainBtn title={"go back"} />
+        <LinkStyels to="/">go back</LinkStyels>
         <Search />
-        <MainBtn
-          title={"load more"}
-          usersData={currentUsers}
-          setCurrentUsers={setCurrentUsers}
-        />
+        <LoadMore usersData={currentUsers} setCurrentUsers={setCurrentUsers} />
       </NavSection>
       <section>
         <TweetsList
