@@ -19,8 +19,3 @@ export const getUsers = (page) => {
 export const changeFollowers = (id, user) => {
   return api.put(`/users/${id}`, user);
 };
-
-export const getUserById = (id) => {
-  const response = api.get(`/users/${id}`);
-  return response;
-};

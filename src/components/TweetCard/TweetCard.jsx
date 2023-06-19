@@ -14,7 +14,12 @@ import {
   UserInfo,
 } from "./TweetCard.styled";
 
-export const TweetCard = ({ userData, currentUsers, setCurrentUsers }) => {
+export const TweetCard = ({
+  userData,
+  currentUsers,
+  setCurrentUsers,
+  setSubscriptions,
+}) => {
   const { avatar, tweets, id, user } = userData;
 
   const currentUser = currentUsers.find((data) => data.id === id);
@@ -22,13 +27,13 @@ export const TweetCard = ({ userData, currentUsers, setCurrentUsers }) => {
   const [currentFollowers, setCurrentFollowers] = useState(
     currentUser.followers
   );
+
   const [isFollowing, setIsFollowing] = useState(currentUser.isFollowing);
 
   const onFollowChange = async () => {
     setCurrentFollowers((prevFollowers) =>
       isFollowing ? prevFollowers - 1 : prevFollowers + 1
     );
-
     setIsFollowing((prevIsFollowing) => !prevIsFollowing);
 
     const updateUser = {
@@ -45,7 +50,19 @@ export const TweetCard = ({ userData, currentUsers, setCurrentUsers }) => {
       }
       return user;
     });
+
     setCurrentUsers(updatedUserSubscription);
+
+    if (isFollowing) {
+      setSubscriptions((prevSubscriptions) =>
+        prevSubscriptions.filter((subscription) => subscription.id !== id)
+      );
+    } else {
+      setSubscriptions((prevSubscriptions) => [
+        ...prevSubscriptions,
+        currentUser,
+      ]);
+    }
 
     try {
       await changeFollowers(currentUser.id, updateUser);
@@ -86,4 +103,5 @@ TweetCard.propTypes = {
   userData: PropTypes.object,
   currentUsers: PropTypes.array,
   setCurrentUsers: PropTypes.func,
+  setSubscriptions: PropTypes.func,
 };

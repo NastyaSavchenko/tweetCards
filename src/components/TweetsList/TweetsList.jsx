@@ -3,17 +3,24 @@ import PropTypes from "prop-types";
 import { TweetCard } from "../TweetCard/TweetCard";
 import { TweetsListStyles } from "./TweetsList.styled";
 
-export const TweetsList = ({ currentUsers, setCurrentUsers }) => {
+export const TweetsList = ({
+  currentUsers,
+  setCurrentUsers,
+  visibleUsers,
+  setSubscriptions,
+  subscriptions,
+}) => {
   return (
     <TweetsListStyles>
-      {currentUsers &&
-        currentUsers.map((user) => {
+      {visibleUsers &&
+        visibleUsers.map((user) => {
           return (
             <li key={user.id}>
               <TweetCard
                 userData={user}
                 currentUsers={currentUsers}
                 setCurrentUsers={setCurrentUsers}
+                setSubscriptions={setSubscriptions}
               />
             </li>
           );
@@ -25,4 +32,7 @@ export const TweetsList = ({ currentUsers, setCurrentUsers }) => {
 TweetsList.propTypes = {
   currentUsers: PropTypes.array,
   setCurrentUsers: PropTypes.func,
+  visibleUsers: PropTypes.array,
+  setSubscriptions: PropTypes.func,
+  subscriptions: PropTypes.array,
 };

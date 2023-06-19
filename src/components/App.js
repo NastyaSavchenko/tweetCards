@@ -1,5 +1,8 @@
+import "react-toastify/dist/ReactToastify.css";
+
 import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import { Layout } from "./Layout/Layout";
 
@@ -16,6 +19,7 @@ const App = () => {
           <Route path="*" element={<Navigate to={"/"} />} />
         </Route>
       </Routes>
+      <ToastContainer autoClose={2000} />
     </>
   );
 };
